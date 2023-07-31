@@ -1,0 +1,558 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS for NotificationCard */
+    .notification-card {
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .notification-card img {
+      width: 100%;
+      height: 150px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .notification-card h3 {
+      font-weight: bold;
+    }
+
+    .actions-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .notification-card button {
+      flex: 1;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="notificationContainer"></div>
+
+  <script>
+    // Hard-coded JSON data
+
+    const jsonData = 
+     
+    {
+  "message": "success",
+  "notifications": [
+    {
+      "hasBeenInteractedWith": false,
+      "id": "CYBT_TIMELINEWSR_TESTNOTIF_1",
+      "actions": [
+        {
+          "analytics": null,
+          "title": "Please ignore",
+          "feedbackLink": null,
+          "link": {
+            "type": null,
+            "method": "POST",
+            "url": "riskprofile/cybs_riskprofile_mobile.html"
+          }
+        }
+      ],
+      "amount": null,
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "riskprofile/cybs_riskprofile_mobile.html"
+      },
+      "feedbackLink": null,
+      "percentageTitle": null,
+      "priority": "exposed",
+      "shouldDisplayDate": true,
+      "title": null,
+      "backgroundImage": "https://picsum.photos/1200/600",
+      "image": null,
+      "isNew": true,
+      "percentageProgress": null,
+      "type": "promotional",
+      "analytics": null,
+      "content": "\r\n"
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "44",
+      "actions": [
+        {
+          "analytics": null,
+          "title": "Please ignore",
+          "feedbackLink": null,
+          "link": {
+            "type": null,
+            "method": "POST",
+            "url": "girokontooverview/homepage.html"
+          }
+        }
+      ],
+      "amount": null,
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "girokontooverview/homepage.html"
+      },
+      "feedbackLink": null,
+      "percentageTitle": null,
+      "priority": "exposed",
+      "shouldDisplayDate": true,
+      "title": "Title of the promotional notification with Image",
+      "backgroundImage": "https://picsum.photos/1200/800",
+      "image": null,
+      "isNew": true,
+      "percentageProgress": null,
+      "type": "promotional",
+      "analytics": null,
+      "content": "I AM promotional NOTIFICATION for demo \r\n' Content goes here'"
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "4121212",
+      "actions": [
+        {
+          "analytics": [
+            {
+              "name": "action",
+              "type": "GA",
+              "parameters": {
+                "label": "Insurance new offers template - action 1",
+                "action": "action",
+                "category": "GAME Timeline"
+              }
+            }
+          ],
+          "title": "Action 1",
+          "feedbackLink": null,
+          "link": {
+            "type": "RELATIVE",
+            "method": "POST",
+            "url": "virements/WS_VirementInterne.html"
+          }
+        },
+        {
+          "analytics": [
+            {
+              "name": "action",
+              "type": "GA",
+              "parameters": {
+                "label": "Insurance new offers template - action 2",
+                "action": "action",
+                "category": "GAME Timeline"
+              }
+            }
+          ],
+          "title": "Action 2",
+          "feedbackLink": {
+            "url": "https://rqt-mobile.creditmutuel.fr/wsmobile/fr/feedback?id=1&action=Action2",
+            "method": "POST",
+            "analytics": null
+          },
+          "link": {
+            "type": "RELATIVE",
+            "method": "POST",
+            "url": "virements/WS_VirementInterne.html"
+          }
+        }
+      ],
+      "amount": null,
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "girokontooverview/homepage.html"
+      },
+      "feedbackLink": null,
+      "percentageTitle": null,
+      "priority": "exposed",
+      "shouldDisplayDate": true,
+      "title": "Title of the promotional notification with Image",
+      "backgroundImage": "https://picsum.photos/1200/700",
+      "date": "2023-01-10 16:00:00",
+      "image": null,
+      "isNew": true,
+      "percentageProgress": null,
+      "type": "promotional",
+      "analytics": null,
+      "content": "I AM promotional NOTIFICATION for demo \r\n' Content goes here'"
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "11",
+      "actions": null,
+      "amount": null,
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "ecash/homepage.html"
+      },
+      "feedbackLink": {
+        "url": "https://rqt-mobile.creditmutuel.fr/wsmobile/fr/feedback?id=1&action=mainLink",
+        "method": "POST",
+        "analytics": [
+          {
+            "name": "action",
+            "type": "GA",
+            "parameters": {
+              "label": "Insurance new offers template - main action",
+              "action": "action",
+              "category": "GAME Timeline"
+            }
+          }
+        ]
+      },
+      "percentageTitle": null,
+      "priority": "important",
+      "shouldDisplayDate": true,
+      "title": "Title of the Default notification",
+      "backgroundImage": "https://picsum.photos/1200/400",
+      "date": "2018-01-10 16:00:00",
+      "image": null,
+      "isNew": false,
+      "percentageProgress": null,
+      "type": "default",
+      "analytics": [
+        {
+          "name": "action",
+          "type": "GA",
+          "parameters": {
+            "label": "Insurrance new offers template",
+            "action": "display",
+            "category": "GAME Timeline"
+          }
+        }
+      ],
+      "content": "Body of the notification"
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "33",
+      "actions": [
+        {
+          "analytics": [
+            {
+              "name": "action",
+              "type": "GA",
+              "parameters": {
+                "label": "Insurance new offers template - action 1",
+                "action": "action",
+                "category": "GAME Timeline"
+              }
+            }
+          ],
+          "title": "Action 1",
+          "feedbackLink": null,
+          "link": {
+            "type": "RELATIVE",
+            "method": "POST",
+            "url": "virements/WS_VirementInterne.html"
+          }
+        },
+        {
+          "analytics": [
+            {
+              "name": "action",
+              "type": "GA",
+              "parameters": {
+                "label": "Insurance new offers template - action 2",
+                "action": "action",
+                "category": "GAME Timeline"
+              }
+            }
+          ],
+          "title": "Action 2",
+          "feedbackLink": {
+            "url": "https://rqt-mobile.creditmutuel.fr/wsmobile/fr/feedback?id=1&action=Action2",
+            "method": "POST",
+            "analytics": null
+          },
+          "link": {
+            "type": "RELATIVE",
+            "method": "POST",
+            "url": "virements/WS_VirementInterne.html"
+          }
+        }
+      ],
+      "amount": "+ 23,00 €",
+      "link": {
+        "type": "NATIVE",
+        "method": "POST",
+        "url": ""
+      },
+      "feedbackLink": {
+        "url": "https://rqt-mobile.creditmutuel.fr/wsmobile/fr/feedback?id=1&action=mainLink",
+        "method": "POST",
+        "analytics": [
+          {
+            "name": "action",
+            "type": "GA",
+            "parameters": {
+              "label": "Insurance new offers template - main action",
+              "action": "action",
+              "category": "GAME Timeline"
+            }
+          }
+        ]
+      },
+      "percentageTitle": null,
+      "priority": "important",
+      "shouldDisplayDate": true,
+      "title": "Title of the Default notification with Amount",
+      "backgroundImage": null,
+      "date": "2018-01-10 16:00:00",
+      "image": null,
+      "isNew": false,
+      "percentageProgress": null,
+      "type": "default",
+      "analytics": [
+        {
+          "name": "action",
+          "type": "GA",
+          "parameters": {
+            "label": "Insurrance new offers template",
+            "action": "display",
+            "category": "GAME Timeline"
+          }
+        }
+      ],
+      "content": "Body of the notification"
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "20",
+      "actions": [
+        {
+          "analytics": [
+            {
+              "name": "",
+              "type": "",
+              "parameters": {
+                "label": "",
+                "action": "",
+                "category": ""
+              }
+            }
+          ],
+          "title": "jetzt PD online it",
+          "feedbackLink": {
+            "url": "https://tst-m.targobank.de/wsmobile/de/timeline/setfeedbackmessage.html?notificationId=DAKT1APP__00408648400010001&action=155",
+            "method": "",
+            "analytics": null
+          },
+          "link": {
+            "type": "NATIVE",
+            "method": "POST",
+            "url": "BROWSER://https://www.targobank.de/service/paydirekt"
+          }
+        },
+        {
+          "analytics": [
+            {
+              "name": "",
+              "type": "",
+              "parameters": {
+                "label": "",
+                "action": "",
+                "category": ""
+              }
+            }
+          ],
+          "title": "SPID ADR CHANGE",
+          "feedbackLink": {
+            "url": "https://tst-m.targobank.de/wsmobile/de/timeline/setfeedbackmessage.html?notificationId=DAKT1APP__00408648400010001&action=157",
+            "method": "",
+            "analytics": null
+          },
+          "link": {
+            "type": "RELATIVE",
+            "method": "POST",
+            "url": "regis/homepage.html?Param=CA"
+          }
+        }
+      ],
+      "amount": "",
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "regis/homepage.html?Param=CA"
+      },
+      "feedbackLink": {
+        "url": "https://tst-m.targobank.de/wsmobile/de/timeline/setfeedbackmessage.html?notificationId=DAKT1APP__00408648400010001&action=LIN",
+        "method": "",
+        "analytics": [
+          {
+            "name": "",
+            "type": "",
+            "parameters": {
+              "label": "",
+              "action": "",
+              "category": ""
+            }
+          }
+        ]
+      },
+      "percentageTitle": "1h",
+      "priority": "standard",
+      "shouldDisplayDate": false,
+      "title": "type = percentage NOTIFICATION ",
+      "backgroundImage": "https://picsum.photos/1200/900",
+      "date": "",
+      "image": null,
+      "isNew": false,
+      "percentageProgress": "0.95",
+      "type": "percentage",
+      "analytics": [
+        {
+          "name": "",
+          "type": "",
+          "parameters": {
+            "label": "",
+            "action": "",
+            "category": ""
+          }
+        }
+      ],
+      "content": "Smartphone, Fernseher oder Waschmaschine: damit Sie lange Freude an Ihren neuen Geräten haben, gibt es den TARGO Geräteschutz.Smartphone, Fernseher oder Waschmaschine: damit Sie lange Freude an Ihren neuen Geräten haben, gibt es den TARGO Geräteschutz."
+    },
+    {
+      "hasBeenInteractedWith": false,
+      "id": "22",
+      "actions": null,
+      "amount": null,
+      "link": {
+        "type": "RELATIVE",
+        "method": "POST",
+        "url": "regis/homepage.html?Param=CA"
+      },
+      "feedbackLink": {
+        "url": "https://tst-m.targobank.de/wsmobile/de/timeline/setfeedbackmessage.html?notificationId=DAKT1APP__00408648400010001&action=LIN",
+        "method": "",
+        "analytics": [
+          {
+            "name": "",
+            "type": "",
+            "parameters": {
+              "label": "",
+              "action": "",
+              "category": ""
+            }
+          }
+        ]
+      },
+      "percentageTitle": "1h",
+      "priority": "standard",
+      "shouldDisplayDate": false,
+      "title": "type = percentage NOTIFICATION with No Buttons",
+      "backgroundImage": "https://picsum.photos/1200/600",
+      "date": "",
+      "image": null,
+      "isNew": false,
+      "percentageProgress": "0.95",
+      "type": "percentage",
+      "analytics": [
+        {
+          "name": "",
+          "type": "",
+          "parameters": {
+            "label": "",
+            "action": "",
+            "category": ""
+          }
+        }
+      ],
+      "content": "Smartphone percentage NOTIFICATION with No Buttons"
+    }
+  ],
+  "returnCode": "0000"
+
+    };
+
+ // Function to format the date
+ function formatDate(inputDate) {
+      const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ];
+
+      const date = new Date(inputDate);
+      const day = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${day} ${month}. ${year}`;
+    }
+
+  
+
+    // Function to create NotificationCard components
+    function createNotificationCards(data) {
+      const container = document.getElementById('notificationContainer');
+
+      data.notifications.forEach((notification) => {
+        const card = document.createElement('div');
+        card.classList.add('notification-card');
+
+        if (notification.date) {
+          const date = document.createElement('p');
+
+          date.innerHTML = `${formatDate(notification.date)}`;
+          card.appendChild(date);
+        }
+
+
+        if (notification.backgroundImage) {
+          const img = document.createElement('img');
+          img.src = notification.backgroundImage;
+          card.appendChild(img);
+        }
+
+        if (notification.title) {
+          const title = document.createElement('h3');
+          title.innerHTML = `<b>${notification.title}</b>`;
+          card.appendChild(title);
+        }
+
+        if (notification.content) {
+          const content = document.createElement('p');
+          content.textContent = notification.content;
+          card.appendChild(content);
+        }
+
+        if (notification.actions) {
+          const actionContainer = document.createElement('div');
+          actionContainer.classList.add('actions-container');
+
+          notification.actions.forEach((action) => {
+            const button = document.createElement('button');
+            button.textContent = action.title;
+            button.addEventListener('click', () => {
+              if (action.link && action.link.url) {
+                window.location.href = action.link.url;
+              }
+            });
+            actionContainer.appendChild(button);
+          });
+
+          card.appendChild(actionContainer);
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    // Call the function to create NotificationCard components
+    createNotificationCards(jsonData);
+
+  </script>
+</body>
+</html>
