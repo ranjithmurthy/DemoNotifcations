@@ -81,7 +81,6 @@
 function displayCurrentData() {
     var jsonDisplay = document.getElementById('jsonDisplay');
     jsonDisplay.textContent = JSON.stringify(jsonData, null, 2);
-
 }
 
 // Function to validate and add new notification
@@ -124,7 +123,45 @@ function validateNotification(notification) {
 
 // Display the initial JSON data on page load
 displayCurrentData();
+	
+	
+	// Add your existing JavaScript code here
 
 
+// Function to display the notification tree
+function displayNotificationTree() {
+    var notificationTree = document.getElementById('notificationTree');
+    notificationTree.innerHTML = '';
+    jsonData.notifications.forEach(function (notification) {
+        var node = createNode(notification);
+        notificationTree.appendChild(node);
+    });
+}
 
+// Function to create a tree node for a notification
+function createNode(notification) {
+    var node = document.createElement('div');
+    node.classList.add('node');
+    var nodeContent = document.createElement('div');
+    nodeContent.textContent = 'Notification ID: ' + notification.id;
+    node.appendChild(nodeContent);
+
+    if (notification.actions) {
+        var actionsNode = document.createElement('div');
+        actionsNode.classList.add('actions');
+        notification.actions.forEach(function (action) {
+            var actionNode = document.createElement('div');
+            actionNode.textContent = 'Action: ' + action.title;
+            actionsNode.appendChild(actionNode);
+        });
+        node.appendChild(actionsNode);
+    }
+
+    return node;
+}
+
+// ... (Previous code)
+
+// Display the notification tree on page load
+displayNotificationTree();
 
