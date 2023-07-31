@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+	}
+
+.container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.input-section,
+.output-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.input-section {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+.output-section {
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
